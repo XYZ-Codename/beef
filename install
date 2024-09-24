@@ -96,7 +96,7 @@ install_linux() {
 	info "Installing ${Distro} prerequisite packages..."
 	if [ "${Distro}" = "Debian" ] || [ "${Distro}" = "Kali" ]; then
 		sudo apt-get update
-		sudo apt-get install curl git build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison nodejs libcurl4-openssl-dev ruby3.3 ruby3.3-dev
+		sudo apt-get install curl git build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison nodejs libcurl4-openssl-dev
 	elif [ "${Distro}" = "RedHat" ]; then
 		sudo yum install -y git make gcc openssl-devel gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel bzip2 autoconf automake libtool bison sqlite-devel nodejs ruby
 	elif [ "${Distro}" = "SuSE" ]; then
@@ -104,7 +104,7 @@ install_linux() {
 		intpkg=""
 		nodejsver=nodejs16
 		rpm --quiet -q nodejs18 && nodejsver=""
-		for i in git make gcc libopenssl-devel gcc-c++ patch libreadline6 readline6-devel libz1 zlib-devel libyaml-devel libffi-devel bzip2 autoconf automake libtool bison sqlite3-devel $nodejsver ruby3.3; do
+		for i in git make gcc libopenssl-devel gcc-c++ patch libreadline6 readline6-devel libz1 zlib-devel libyaml-devel libffi-devel bzip2 autoconf automake libtool bison sqlite3-devel $nodejsver; do
 			rpm --quiet -q "${i}" || intpkg="${intpkg} ${i}"
 		done
 		[ "$intpkg" ] && sudo zypper -n install -l "${intpkg}"
